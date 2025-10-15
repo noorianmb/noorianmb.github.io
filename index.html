@@ -1,69 +1,627 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Website</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f8f9fa;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background: #007bff;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      background: white;
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      margin-bottom: 1rem;
-    }
-
-    .data {
-      background: #f1f3f5;
-      padding: 1rem;
-      border-radius: 6px;
-      font-size: 1.1rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      color: #666;
-      font-size: 0.9rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammad Noorian | Senior Android Developer</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#06B6D4',  // teal
+                        secondary: '#3B82F6', // blue
+                        dark: '#0F172A',
+                        darker: '#020617'
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0F172A;
+            color: #E2E8F0;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #06B6D4 0%, #3B82F6 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #06B6D4 0%, #3B82F6 100%);
+            transition: width 1s ease-in-out;
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <h1>Welcome to My Website</h1>
-  </header>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-darker bg-opacity-90 backdrop-blur-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold gradient-text">Mohammad Noorian</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-300 hover:text-primary transition">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-primary transition">About</a>
+                    <a href="#skills" class="text-gray-300 hover:text-primary transition">Skills</a>
+                    <a href="#experience" class="text-gray-300 hover:text-primary transition">Experience</a>
+                    <a href="#projects" class="text-gray-300 hover:text-primary transition">Projects</a>
+                    <a href="#contact" class="text-gray-300 hover:text-primary transition">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-gray-300 hover:text-primary focus:outline-none">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-  <main>
-    <h2>Simple Data</h2>
-    <div class="data">
-      <p><strong>Name:</strong> Mohammad</p>
-      <p><strong>Role:</strong> Senior Android Developer</p>
-      <p><strong>Experience:</strong> 7+ Years</p>
-    </div>
-  </main>
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8" data-aos="fade">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">Mohammad Noorian</h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold gradient-text mb-6">Senior Android Developer</h2>
+                    <p class="text-lg text-gray-300 mb-8">Building scalable Android apps with clean architecture and modern technologies.</p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="bg-primary hover:bg-primary-600 text-white px-6 py-3 rounded-lg font-medium transition">Hire Me</a>
+                        <div class="flex space-x-3">
+                            <a href="#" class="bg-gray-800 hover:bg-gray-700 p-3 rounded-lg transition">
+                                <i data-feather="github"></i>
+                            </a>
+                            <a href="#" class="bg-gray-800 hover:bg-gray-700 p-3 rounded-lg transition">
+                                <i data-feather="linkedin"></i>
+                            </a>
+                            <a href="#" class="bg-gray-800 hover:bg-gray-700 p-3 rounded-lg transition">
+                                <i data-feather="book"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -top-6 -left-6 w-32 h-32 bg-primary rounded-full mix-blend-multiply filter blur-xl opacity-40 animate-blob"></div>
+                    <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-secondary rounded-full mix-blend-multiply filter blur-xl opacity-40 animate-blob animation-delay-2000"></div>
+                    <div class="absolute -bottom-8 left-20 w-32 h-32 bg-gray-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+                    <div class="relative bg-gray-800 rounded-2xl overflow-hidden border border-gray-700">
+                        <img src="http://static.photos/technology/640x360/42" alt="Android Development" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    &copy; 2025 Mohammad. All rights reserved.
-  </footer>
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">About Me</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <img src="http://static.photos/people/640x360/123" alt="Mohammad Noorian" class="rounded-2xl border-2 border-gray-700 w-full">
+                </div>
+                <div data-aos="fade-left">
+                    <p class="text-lg text-gray-300 mb-6">
+                        I'm a Senior Android Developer with over 7 years of experience building high-quality, performant apps. 
+                        I specialize in Kotlin, Jetpack Compose, and modern Android architecture. 
+                        I enjoy mentoring developers and writing technical articles to share my knowledge.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="bg-primary bg-opacity-20 p-2 rounded-full mr-3">
+                                    <i data-feather="code" class="text-primary"></i>
+                                </div>
+                                <span class="font-medium">7+ Years</span>
+                            </div>
+                            <p class="text-sm text-gray-400 mt-1">Experience</p>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="bg-secondary bg-opacity-20 p-2 rounded-full mr-3">
+                                    <i data-feather="layers" class="text-secondary"></i>
+                                </div>
+                                <span class="font-medium">30+ Apps</span>
+                            </div>
+                            <p class="text-sm text-gray-400 mt-1">Developed</p>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="bg-primary bg-opacity-20 p-2 rounded-full mr-3">
+                                    <i data-feather="users" class="text-primary"></i>
+                                </div>
+                                <span class="font-medium">Mentored</span>
+                            </div>
+                            <p class="text-sm text-gray-400 mt-1">Junior Developers</p>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="bg-secondary bg-opacity-20 p-2 rounded-full mr-3">
+                                    <i data-feather="book-open" class="text-secondary"></i>
+                                </div>
+                                <span class="font-medium">50+</span>
+                            </div>
+                            <p class="text-sm text-gray-400 mt-1">Articles</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Technical Skills</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Technical Skills -->
+                <div class="bg-gray-800 rounded-xl p-6" data-aos="fade-up">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-primary bg-opacity-20 p-2 rounded-lg mr-3">
+                            <i data-feather="code" class="text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Programming</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Kotlin</span>
+                                <span class="text-sm text-gray-400">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Java</span>
+                                <span class="text-sm text-gray-400">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Android Skills -->
+                <div class="bg-gray-800 rounded-xl p-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-secondary bg-opacity-20 p-2 rounded-lg mr-3">
+                            <i data-feather="smartphone" class="text-secondary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Android</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Jetpack Compose</span>
+                                <span class="text-sm text-gray-400">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Clean Architecture</span>
+                                <span class="text-sm text-gray-400">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Coroutines/Flow</span>
+                                <span class="text-sm text-gray-400">92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 92%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other Skills -->
+                <div class="bg-gray-800 rounded-xl p-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-primary bg-opacity-20 p-2 rounded-lg mr-3">
+                            <i data-feather="settings" class="text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Other</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Dagger/Hilt</span>
+                                <span class="text-sm text-gray-400">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">CI/CD</span>
+                                <span class="text-sm text-gray-400">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Performance Optimization</span>
+                                <span class="text-sm text-gray-400">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Work Experience</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+            </div>
+            <div class="relative">
+                <!-- Timeline -->
+                <div class="border-l-2 border-gray-700 absolute h-full left-1/2 transform -translate-x-1/2 hidden md:block"></div>
+                
+                <!-- Timeline Item 1 -->
+                <div class="mb-12 md:flex items-center" data-aos="fade-up">
+                    <div class="md:w-1/2 md:pr-8 text-right hidden md:block">
+                        <div class="relative">
+                            <div class="absolute -right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-primary rounded-full border-2 border-gray-700"></div>
+                            <p class="text-gray-400 mb-1">2020 - Present</p>
+                            <h3 class="text-xl font-semibold">Senior Android Developer</h3>
+                            <p class="text-secondary">FinTech Company</p>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 md:pl-8 md:text-left">
+                        <div class="bg-gray-800 p-6 rounded-xl">
+                            <div class="md:hidden mb-3">
+                                <p class="text-gray-400 mb-1">2020 - Present</p>
+                                <h3 class="text-xl font-semibold">Senior Android Developer</h3>
+                                <p class="text-secondary">FinTech Company</p>
+                            </div>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-300">
+                                <li>Led the migration from Java to Kotlin for the core banking app with 5M+ users</li>
+                                <li>Implemented Jetpack Compose for new features, reducing UI development time by 40%</li>
+                                <li>Designed and implemented a modular architecture, improving build times by 60%</li>
+                                <li>Mentored 3 junior developers, improving team productivity</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 2 -->
+                <div class="mb-12 md:flex items-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="md:w-1/2 md:pl-8 order-2">
+                        <div class="relative">
+                            <div class="absolute -left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-secondary rounded-full border-2 border-gray-700"></div>
+                            <div class="md:text-right">
+                                <p class="text-gray-400 mb-1">2017 - 2020</p>
+                                <h3 class="text-xl font-semibold">Android Developer</h3>
+                                <p class="text-secondary">E-commerce Company</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 md:pr-8 order-1">
+                        <div class="bg-gray-800 p-6 rounded-xl">
+                            <div class="md:hidden mb-3">
+                                <p class="text-gray-400 mb-1">2017 - 2020</p>
+                                <h3 class="text-xl font-semibold">Android Developer</h3>
+                                <p class="text-secondary">E-commerce Company</p>
+                            </div>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-300">
+                                <li>Developed features for the flagship shopping app with 10M+ downloads</li>
+                                <li>Optimized app performance, reducing ANRs by 80%</li>
+                                <li>Integrated with RESTful APIs and implemented offline-first approach</li>
+                                <li>Collaborated with designers to implement pixel-perfect UIs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Education -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="inline-block bg-gray-800 px-6 py-3 rounded-full">
+                        <div class="flex items-center">
+                            <div class="bg-primary bg-opacity-20 p-2 rounded-full mr-3">
+                                <i data-feather="book" class="text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold">B.Sc. in Computer Engineering</h3>
+                                <p class="text-gray-400 text-sm">University of Technology, 2013 - 2017</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Featured Projects</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 transition-transform hover:scale-105" data-aos="fade-up">
+                    <div class="h-48 overflow-hidden">
+                        <img src="http://static.photos/technology/640x360/101" alt="FinTech App" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">FinTech Banking App</h3>
+                        <p class="text-gray-300 mb-4">A secure mobile banking application with biometric authentication and real-time transactions.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-700 text-xs px-3 py-1 rounded-full">Kotlin</span>
+                            <span class="bg-gray-700 text-xs px-3 py-1 rounded-full">Jetpack Compose</span>
+                            <span class="bg-gray-700 text-xs px-3 py-1 rounded-full">Room</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-primary hover:text-primary-400 flex items-center">
+                                <i data-feather="github" class="w-4 h-4 mr-1"></i>
+                                <span class="text-sm">Code</span>
+                            </a>
+                            <a href="#" class="text-secondary hover:text-secondary-400 flex items-center">
+                                <i data-feather="external-link" class="w-4 h-4 mr-1"></i>
+                                <span class="text-sm">Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 transition-transform hover:scale-105" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 overflow-hidden">
+                        <img src="http://static.photos/technology/640x360/102" alt="E-commerce App" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">E-commerce Platform</h3>
+                        <p class="text-gray-300 mb-4">A feature-rich shopping app with product recommendations and AR try-on features.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-700 text-xs px-3 py-1 rounded-full">Kotlin</span>
+                            <span class="bg-gray-700 text-xs px-3 py-1 rounded-full">MVVM</span>
+                            <span class="bg-gray-700 text-xs px-3 py-1 rounded-full">Coroutines</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-primary hover:text-primary-400 flex items-center">
+                                <i data-feather="github" class="w-4 h-4 mr-1"></i>
+                                <span class="text-sm">Code</span>
+                            </a>
+                            <a href="#" class="text-secondary hover:text-secondary-400 flex items-center">
+                                <i data-feather="external-link" class="w-4 h-4 mr-1"></i>
+                                <span class="text-sm">Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 transition-transform hover:scale-105" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 overflow-hidden">
+                        <img src="http://static.photos/technology/640x360/103" alt="Travel App" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Travel Companion</h3>
+                        <p class="text-gray-300 mb-4">An offline-first travel app with maps, itinerary planning, and local recommendations.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-700 text-xs px-3 py-1 rounded-full">Kotlin</span>
+                            <span class="bg-gray-700 text-xs px-3 py-1 rounded-full">Jetpack Compose</span>
+                            <span class="bg-gray-700 text-xs px-3 py-1 rounded-full">Room</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-primary hover:text-primary-400 flex items-center">
+                                <i data-feather="github" class="w-4 h-4 mr-1"></i>
+                                <span class="text-sm">Code</span>
+                            </a>
+                            <a href="#" class="text-secondary hover:text-secondary-400 flex items-center">
+                                <i data-feather="external-link" class="w-4 h-4 mr-1"></i>
+                                <span class="text-sm">Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Get In Touch</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div data-aos="fade-right">
+                    <h3 class="text-2xl font-semibold mb-4 gradient-text">Let's Collaborate</h3>
+                    <p class="text-gray-300 mb-6">
+                        Interested in working together or have questions about my work? 
+                        Feel free to reach out through the form or via my social profiles.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="bg-primary bg-opacity-20 p-3 rounded-full mr-4">
+                                <i data-feather="mail" class="text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Email</h4>
+                                <p class="text-gray-400">contact@mohammadnoorian.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-secondary bg-opacity-20 p-3 rounded-full mr-4">
+                                <i data-feather="map-pin" class="text-secondary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Location</h4>
+                                <p class="text-gray-400">San Francisco, CA</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4 mt-8">
+                        <a href="#" class="bg-gray-800 hover:bg-gray-700 p-3 rounded-lg transition">
+                            <i data-feather="github"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-gray-700 p-3 rounded-lg transition">
+                            <i data-feather="linkedin"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-gray-700 p-3 rounded-lg transition">
+                            <i data-feather="twitter"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-gray-700 p-3 rounded-lg transition">
+                            <i data-feather="book"></i>
+                        </a>
+                    </div>
+                </div>
+                <div data-aos="fade-left">
+                    <form class="bg-gray-800 p-6 rounded-xl">
+                        <div class="mb-4">
+                            <label for="name" class="block text-sm font-medium mb-2">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 px-6 rounded-lg font-medium hover:opacity-90 transition">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 sm:px-6 lg:px-8 bg-darker">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center">
+                <h2 class="text-2xl font-bold mb-2 gradient-text">Mohammad Noorian</h2>
+                <p class="text-gray-400 mb-6">Senior Android Developer</p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="#" class="text-gray-400 hover:text-primary transition">
+                        <i data-feather="github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition">
+                        <i data-feather="linkedin"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition">
+                        <i data-feather="twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition">
+                        <i data-feather="book"></i>
+                    </a>
+                </div>
+                <p class="text-gray-500">© 2025 Mohammad Noorian. All rights reserved.</p>
+                <p class="text-gray-500 mt-1">Built with ❤️ and Kotlin</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Initialize Feather Icons
+        feather.replace();
+
+        // Animate skill bars on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const width = entry.target.getAttribute('data-width');
+                        entry.target.style.width = width;
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                bar.setAttribute('data-width', width);
+                observer.observe(bar);
+            });
+
+            // Mobile menu toggle
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.createElement('div');
+            mobileMenu.className = 'md:hidden fixed inset-0 bg-darker z-40 hidden';
+            mobileMenu.innerHTML = `
+                <div class="flex justify-end p-4">
+                    <button id="close-menu" class="text-gray-300 hover:text-primary focus:outline-none">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+                <div class="flex flex-col items-center justify-center h-full space-y-8">
+                    <a href="#home" class="text-2xl text-gray-300 hover:text-primary transition">Home</a>
+                    <a href="#about" class="text-2xl text-gray-300 hover:text-primary transition">About</a>
+                    <a href="#skills" class="text-2xl text-gray-300 hover:text-primary transition">Skills</a>
+                    <a href="#experience" class="text-2xl text-gray-300 hover:text-primary transition">Experience</a>
+                    <a href="#projects" class="text-2xl text-gray-300 hover:text-primary transition">Projects</a>
+                    <a href="#contact" class="text-2xl text-gray-300 hover:text-primary transition">Contact</a>
+                </div>
+            `;
+            document.body.appendChild(mobileMenu);
+            
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.remove('hidden');
+                feather.replace();
+            });
+            
+            document.addEventListener('click', (e) => {
+                if (e.target.id === 'close-menu' || (e.target.closest('a') && mobileMenu.contains(e.target.closest('a')))) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
